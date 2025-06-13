@@ -1,0 +1,124 @@
+:root {
+  --bg: #fff5f7;
+  --card: #ffffff;
+  --accent: #f8b4c0;
+  --accent-hover: #f48ca2;
+  --border: #ffd6e0;
+  --text: #333;
+}
+
+body {
+  background-color: var(--bg);
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 700px;
+  margin: 2rem;
+  padding: 2rem;
+  background-color: var(--card);
+  border-radius: 20px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  transition: 0.3s ease;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.2rem;
+  color: var(--accent-hover);
+  margin-bottom: 1rem;
+}
+
+.doodle {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.task-form input,
+.task-form textarea {
+  width: 100%;
+  margin-bottom: 0.75rem;
+  padding: 0.75rem;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+}
+
+.task-form button {
+  background-color: var(--accent);
+  color: white;
+  font-weight: bold;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.task-form button:hover {
+  background-color: var(--accent-hover);
+}
+
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.filter-buttons button {
+  background-color: #ffe2ea;
+  border: none;
+  border-radius: 15px;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.filter-buttons button:hover {
+  background-color: #ffc8d3;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.task-card {
+  background-color: #fff0f5;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 12px rgba(255, 182, 193, 0.3);
+  transition: all 0.3s ease;
+}
+
+.task-card:hover {
+  transform: translateY(-2px);
+}
+
+.task-card button {
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+  background-color: #f7a8a8;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.task-card button:hover {
+  background-color: #f26464;
+}
