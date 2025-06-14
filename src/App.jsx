@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 
+const API = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 function App() {
   const [tasks, setTasks] = useState([]);
   const [newTitle, setNewTitle] = useState('');
@@ -13,7 +15,7 @@ function App() {
   }, []);
 
   const fetchTasks = () => {
-    axios.get('http://localhost:5000/tasks')
+    axios.get(`${API}/tasks`)
       .then(res => setTasks(res.data))
       .catch(err => console.error("Fetch error:", err));
   };
@@ -22,14 +24,16 @@ function App() {
     e.preventDefault();
     if (!newTitle.trim()) return;
 
-    axios.post('http://localhost:5000/tasks', {
+    axios.post(`${API}/tasks`, {
       title: newTitle,
       description: newDesc,
-    }).then(res => {
+    })
+    .then(res => {
       setTasks([...tasks, res.data]);
       setNewTitle('');
       setNewDesc('');
-    }).catch(err => console.error("Add error:", err));
+    })
+    .catch(err => console.error("Add error:", err));
   };
 
   const nextStatus = (status) => {
@@ -46,7 +50,7 @@ function App() {
   };
 
   const updateStatus = (id, newStatus) => {
-    axios.put(`http://localhost:5000/tasks/${id}`, { status: newStatus })
+    axios.put(`${API}/tasks/${id}`, { status: newStatus })
       .then(res => {
         setTasks(tasks.map(t => t._id === id ? res.data : t));
       })
@@ -54,7 +58,7 @@ function App() {
   };
 
   const deleteTask = (id) => {
-    axios.delete(`http://localhost:5000/tasks/${id}`)
+    axios.delete(`${API}/tasks/${id}`)
       .then(() => setTasks(tasks.filter(t => t._id !== id)))
       .catch(err => console.error("Delete error:", err));
   };
@@ -82,7 +86,7 @@ function App() {
       </form>
 
       <div className="filter-buttons">
-        {['All', 'To Do', 'In Progress', 'Done'].map(status => (
+        {["All", "To Do", "In Progress", "Done"].map(status => (
           <button
             type="button"
             key={status}
@@ -114,7 +118,7 @@ function App() {
                 Delete
               </button>
             </li>
-        ))}
+          ))}
       </ul>
     </div>
   );
